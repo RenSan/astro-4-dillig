@@ -3,11 +3,11 @@ import { getCollection, render } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 
 export async function getStaticPaths() {
-  const pages = await getCollection("pages");
-  return pages.map((page) => ({
-    params: { id: page.id },
-    props: { page },
-  }));
+    const pages = await getCollection("pages");
+    return pages.map((page) => ({
+        params: { id: page.id },
+        props: { page },
+    }));
 }
 
 const { page } = Astro.props;
@@ -16,10 +16,10 @@ const { Content } = await render(page);
 ---
 
 <Layout title={title}>
-  <div class="flex gap-12">
-    <main class="prose prose-invert">
-      <h2 transition:name={`title-${page.id}`}>{title}</h2>
-      <Content />
-    </main>
-  </div>
+    <div class="flex gap-12">
+        <main class="prose prose-invert">
+            <h2 transition:name={`title-${page.id}`}>{title}</h2>
+            <Content />
+        </main>
+    </div>
 </Layout>
