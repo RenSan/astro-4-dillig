@@ -1,7 +1,71 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import PackageCard from "../components/PackageCard.astro";
 
+const packages = [
+    {
+        title: "BÁSICO",
+        price: 99.0,
+        description: "Mantenimiento básico y reparaciones para su vehículo.",
+        image: "https://images.unsplash.com/photo-1487754180451-c456f719a1fc?ixlib=rb-4.0.3",
+        features: [
+            "Cambio de aceite",
+            "Afinación",
+            "Reparaciones generales",
+            "Servicio de motor",
+            "Diagnóstico computarizado",
+        ],
+    },
+    {
+        title: "ESTÁNDAR",
+        price: 199.0,
+        description:
+            "Cuidado integral para el rendimiento y la seguridad de su vehículo.",
+        image: "https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+        features: [
+            "Todas las características del paquete Básico",
+            "Servicio de frenos",
+            "Rotación de neumáticos",
+            "Relleno de fluidos",
+            "Revisión de batería",
+        ],
+    },
+    {
+        title: "PREMIUM",
+        price: 299.0,
+        description:
+            "Paquete de cuidado definitivo para un rendimiento y longevidad óptimos.",
+        image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3",
+        features: [
+            "Todas las características del paquete Estándar",
+            "Inspección detallada",
+            "Servicio de aire acondicionado",
+            "Servicio de transmisión",
+            "Alineación de ruedas",
+        ],
+    },
+];
 ---
-<Layout title="Servicios">
-    <p>This is the services page</p>
+
+<Layout title="Paquetes">
+    <main>
+        <div class="text-white text-center py-10 mb-10">
+            <h1 class="text-5xl font-bold mb-4">
+                CONTAMOS CON UNA AMPLIA<br />GAMA DE SERVICIOS
+            </h1>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 space-y-8">
+            {
+                packages.map((pkg) => (
+                    <PackageCard
+                        title={pkg.title}
+                        price={pkg.price}
+                        description={pkg.description}
+                        image={pkg.image}
+                        features={pkg.features}
+                    />
+                ))
+            }
+        </div>
+    </main>
 </Layout>
