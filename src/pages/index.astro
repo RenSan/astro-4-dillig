@@ -3,31 +3,24 @@ import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
 const collections = await getCollection("pages");
-console.log(collections);
 ---
 
 <Layout title="Dillig">
     <ul class="space-y-4">
         {
             collections.map((page) => (
-                <li
-                    class="bg-gray-100 p-4 rounded-lg shadow-lg hover:scale-110 transition cursor-pointer"
-                    onclick={`redirect('${page.id}')`}
-                >
-                    <h2
-                        transition:name={`title-${page.id}`}
-                        class="text-xl font-bold text-gray-800"
-                    >
-                        {page.data.title}
-                    </h2>
-                    <p class="text-gray-600">{page.data.description}</p>
+                <li class="bg-gray-100 p-4 rounded-lg shadow-lg hover:scale-110 transition cursor-pointer">
+                    <a href={`/${page.id}`}>
+                        <h2
+                            transition:name={`title-${page.slug}`}
+                            class="text-xl font-bold text-gray-800"
+                        >
+                            {page.data.title}
+                        </h2>
+                        <p class="text-gray-600">{page.data.description}</p>
+                    </a>
                 </li>
             ))
         }
     </ul>
 </Layout>
-<script defer>
-    function redirect(id) {
-        window.location.href = `/${id}`;
-    }
-</script>

@@ -18,7 +18,7 @@ const { Content } = await render(page);
 <Layout title={title}>
     <div class="flex gap-12">
         <main class="prose prose-invert">
-            <h2 transition:name={`title-${page.id}`}>{title}</h2>
+            <h2 transition:name={`title-${page.slug}`}>{title}</h2>
             <Content />
         </main>
     </div>
